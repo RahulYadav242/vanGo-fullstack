@@ -8,12 +8,24 @@ dotenv.config();
 const app = express();
 
 // ✅ Setup CORS first
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://vango-fullstack.onrender.com"
+];
+
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
+
 
 // ✅ Then parse cookies and JSON
 app.use(cookieParser());
