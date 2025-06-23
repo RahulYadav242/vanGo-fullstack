@@ -8,7 +8,8 @@ import LoginPage from './pages/LoginPage'
 import SettingsPage from './pages/SettingsPage'
 import ProfilePage from './pages/ProfilePage'
 import {useAuthStore} from './store/useAuthStore'
-import {Loader} from 'lucide-react'
+import Loader from './components/Loader.jsx';
+// import {Loader} from 'lucide-react'
 import { Toaster } from 'react-hot-toast';
 import {useThemeStore} from './store/useThemeStore'
 
@@ -45,14 +46,17 @@ export default function App() {
     checkAuth();
   }, [checkAuth]);
 
-
  if (isCheckingAuth) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        <Loader className="size-10 animate-spin" />
-      </div>
+      <Loader/>
+      // <div className="flex items-center justify-center h-screen">
+      //   <Loader className="size-10 animate-spin" />
+      // </div>
     );
   }
+
+
+
 
   return (
     <BrowserRouter>
