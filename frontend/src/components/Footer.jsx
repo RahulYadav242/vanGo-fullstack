@@ -1,12 +1,9 @@
 import React from 'react'
+import {useAuthStore} from '../store/useAuthStore'
 
 const Footer = () => {
 
     const footerNavs = [
-        {
-            href: 'javascript:void()',
-            name: 'Terms'
-        },
         {
             href: 'javascript:void()',
             name: 'License'
@@ -20,6 +17,9 @@ const Footer = () => {
             name: 'About us'
         }
     ]
+
+    const { authUser} = useAuthStore();
+
     return (
         <footer className="pt-10">
             <div className="max-w-screen-xl mx-auto px-4 text-gray-600 md:px-8">
@@ -28,7 +28,7 @@ const Footer = () => {
                     <p>
                         Travel better across India — with vans made for every road.
                     </p>
-                    <div className="items-center gap-x-3 space-y-3 sm:flex sm:justify-center sm:space-y-0">
+                    {!authUser?<div className="items-center gap-x-3 space-y-3 sm:flex sm:justify-center sm:space-y-0">
                         <a href="javascript:void(0)" className="block py-2 px-4 text-center text-white font-medium bg-indigo-600 duration-150 hover:bg-indigo-500 active:bg-indigo-700 rounded-lg shadow-lg hover:shadow-none">
                             Let's get started
                         </a>
@@ -38,7 +38,7 @@ const Footer = () => {
                                 <path fillRule="evenodd" d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z" clipRule="evenodd" />
                             </svg>
                         </a>
-                    </div>
+                    </div>:null}
                 </div>
                 <div className="mt-10 py-10 border-t items-center justify-between sm:flex">
                     <p>© 2025 VANGO. All rights reserved. Made in India 🇮🇳</p>
