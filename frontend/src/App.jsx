@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom";
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import HomePage from './pages/HomePage'
 import SignUpPage from './pages/SignUpPage'
 import LoginPage from './pages/LoginPage'
@@ -93,6 +94,7 @@ export default function App() {
           <Route path='*' element={<NotFound/>} />
         </Routes>
         <Toaster />
+       <Footer/>
       </div>
     </BrowserRouter>
   );
